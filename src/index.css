@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  --breakpoint-sm: 540px;
+  --breakpoint-md: 720px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1140px;
+  --breakpoint-2xl: 1320px;
+}
+
+.container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 540px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .container {
+    padding-inline: 4rem;
+  }
+}
+
+@media (min-width: 1140px) {
+  .container {
+    padding-inline: 5rem;
+  }
+}
