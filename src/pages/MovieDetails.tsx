@@ -25,11 +25,9 @@ export function MovieDetails() {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white">
-      {/* I used Chat GPT to make this design */}
+      
 
-      {/* HERO */}
       <section className="relative min-h-175 overflow-hidden">
-        {/* Backdrop */}
         <div className="absolute inset-0">
           <img
             src={getImageUrl(movie?.backdrop_path ?? "", "original") ?? ""}
@@ -37,7 +35,6 @@ export function MovieDetails() {
             className="h-full w-full object-cover"
           />
 
-          {/* Gradients */}
           <div className="absolute inset-0 bg-black/40" />
 
           <div className="absolute inset-0 bg-linear-to-r from-[#080808] via-[#080808]/70 to-transparent" />
@@ -45,10 +42,8 @@ export function MovieDetails() {
           <div className="absolute inset-x-0 bottom-0 h-80 bg-linear-to-t from-[#080808] to-transparent" />
         </div>
 
-        {/* Content */}
         <div className="relative mx-auto flex min-h-175 max-w-7xl items-end px-4 pb-16 sm:px-6 lg:px-8">
           <div className="grid w-full gap-10 md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr]">
-            {/* Poster */}
             <div className="hidden md:block">
               <img
                 src={getImageUrl(movie?.poster_path ?? "", "w500") ?? ""}
@@ -57,9 +52,7 @@ export function MovieDetails() {
               />
             </div>
 
-            {/* Information */}
             <div className="max-w-3xl self-end">
-              {/* Badges */}
               <div className="mb-5 flex flex-wrap items-center gap-3">
                 <span className="rounded-md bg-white/10 px-3 py-1 text-sm backdrop-blur">
                   {movie?.status}
@@ -72,7 +65,6 @@ export function MovieDetails() {
                 )}
 
                 <div className="flex items-center gap-1 text-sm text-yellow-400">
-                  {/* <Star className="h-4 w-4 fill-current" /> */}
                   {movie?.vote_average.toFixed(1)}
                 </div>
 
@@ -81,29 +73,24 @@ export function MovieDetails() {
                 </span>
               </div>
 
-              {/* Title */}
               <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-7xl">
                 {movie?.title}
               </h1>
 
-              {/* Tagline */}
               {movie?.tagline && (
                 <p className="mt-4 text-lg italic text-white/60 sm:text-xl">
                   "{movie?.tagline}"
                 </p>
               )}
 
-              {/* Meta */}
               <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
                 <div className="flex items-center gap-2">
-                  {/* <Calendar className="h-4 w-4" /> */}
                   {movie?.release_date?.slice(0, 4)}
                 </div>
 
                 <span>•</span>
 
                 <div className="flex items-center gap-2">
-                  {/* <Clock className="h-4 w-4" /> */}
                   {movie?.runtime} min
                 </div>
 
@@ -112,7 +99,6 @@ export function MovieDetails() {
                 <span>{movie?.original_language.toUpperCase()}</span>
               </div>
 
-              {/* Genres */}
               <div className="mt-5 flex flex-wrap gap-2">
                 {movie?.genres.map((genre) => (
                   <span
@@ -124,20 +110,12 @@ export function MovieDetails() {
                 ))}
               </div>
 
-              {/* Overview */}
-              <p className="mt-7 max-w-2xl text-base leading-7 text-white/70 sm:text-lg">
-                {movie?.overview}
-              </p>
-
-              {/* Actions */}
               <div className="mt-8 flex flex-wrap gap-3">
                 <button className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105 hover:bg-white/90">
-                  {/* <Play className="h-5 w-5 fill-current" /> */}
                   Watch Trailer
                 </button>
 
                 <button className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-6 py-3 font-semibold backdrop-blur transition hover:bg-white/20">
-                  {/* <Heart className="h-5 w-5" /> */}
                   Add to Favorites
                 </button>
               </div>
@@ -146,10 +124,8 @@ export function MovieDetails() {
         </div>
       </section>
 
-      {/* DETAILS */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
-          {/* LEFT */}
           <div>
             <h2 className="text-2xl font-bold">About the Movie</h2>
 
@@ -158,7 +134,6 @@ export function MovieDetails() {
             </p>
           </div>
 
-          {/* RIGHT */}
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
             <h3 className="text-lg font-bold">Movie Information</h3>
 
