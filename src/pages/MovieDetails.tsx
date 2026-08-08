@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import type { MovieDetails } from "../features/movies/types/movies.types";
 import { getMovieDetails } from "../features/movies/api/movies.api";
 import { getImageUrl } from "../lib/tmdb";
+import { dialog } from "../features/movies/components/MovieTrailerDialog";
+
 
 export function MovieDetails() {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
@@ -25,8 +27,6 @@ export function MovieDetails() {
 
   return (
     <div className="min-h-screen bg-[#080808] text-white">
-      
-
       <section className="relative min-h-175 overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -111,7 +111,12 @@ export function MovieDetails() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <button className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105 hover:bg-white/90">
+                <button
+                  onClick={() => {
+                    dialog.open("trailer", { title:  movie?.title +' Trailer', id: id});
+                  }}
+                  className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105 hover:bg-white/90"
+                >
                   Watch Trailer
                 </button>
 
@@ -181,6 +186,7 @@ export function MovieDetails() {
           </div>
         </div>
       </section>
+      <dialog.Viewport />
     </div>
   );
 }
