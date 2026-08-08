@@ -27,6 +27,19 @@ export const dialog = createOverlayManager<DialogPayload>(
       fetchMovieVideos();
     }, [id]);
 
+    const officialTrailer =
+      movieVideos.find(
+        (video) =>
+          video.site === "YouTube" &&
+          video.type === "Trailer" &&
+          video.official,
+      ) ??
+      movieVideos.find(
+        (video) => video.site === "YouTube" && video.type === "Trailer",
+      );
+
+    const trailerKey = officialTrailer?.key ?? movieVideos[0]?.key;
+
     return (
       <Dialog.Root {...rest}>
         <Dialog.Portal>
@@ -43,7 +56,7 @@ export const dialog = createOverlayManager<DialogPayload>(
           shadow-2xl
         "
             >
-              {/* Header */}
+             
               <Dialog.Header className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 p-1!">
                 <Dialog.Title className="truncate text-lg font-semibold sm:text-xl ">
                   {title}
@@ -62,12 +75,12 @@ export const dialog = createOverlayManager<DialogPayload>(
                 </Dialog.HeaderActions>
               </Dialog.Header>
 
-              {/* Content */}
+              
               <Dialog.Content className="p-0!">
-                {movieVideos.length > 0 ? (
+                {movieVideos.length > 0 && trailerKey ? (
                   <div className="aspect-video w-full bg-black">
                     <iframe
-                      src={`https://www.youtube.com/embed/${movieVideos[0].key}`}
+                      src={`https://www.youtube.com/embed/${trailerKey}`}
                       title={`${title} Trailer`}
                       className="h-full w-full"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
