@@ -97,3 +97,21 @@ export interface MovieVideosResponse {
   id: number;
   results: MovieVideo[];
 }
+export interface MovieCastResponse {
+  id: number;
+  cast: MovieCast[];
+}
+export interface MovieCast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  credit_id: string;
+  department: string;
+  character: string;
+  job: string;
+}

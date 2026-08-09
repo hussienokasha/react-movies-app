@@ -5,6 +5,10 @@ import type { MovieDetails } from "../features/movies/types/movies.types";
 import { getMovieDetails } from "../features/movies/api/movies.api";
 import { getImageUrl } from "../lib/tmdb";
 import { dialog } from "../features/movies/components/MovieTrailerDialog";
+import { StarFill } from "@primeicons/react/star-fill";
+import { Youtube } from '@primeicons/react'
+import { MovieCast } from "../features/movies/components/MovieCast";
+
 
 
 export function MovieDetails() {
@@ -66,6 +70,7 @@ export function MovieDetails() {
 
                 <div className="flex items-center gap-1 text-sm text-yellow-400">
                   {movie?.vote_average.toFixed(1)}
+                  <StarFill />
                 </div>
 
                 <span className="text-sm text-white/60">
@@ -118,6 +123,7 @@ export function MovieDetails() {
                   className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105 hover:bg-white/90"
                 >
                   Watch Trailer
+                  <Youtube  />
                 </button>
 
                 <button className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-6 py-3 font-semibold backdrop-blur transition hover:bg-white/20">
@@ -187,6 +193,7 @@ export function MovieDetails() {
         </div>
       </section>
       <dialog.Viewport />
+      <MovieCast movieId={id} />
     </div>
   );
 }

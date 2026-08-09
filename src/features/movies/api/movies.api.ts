@@ -3,6 +3,7 @@ import type {
   MoviesResponse,
   MovieDetails,
   MovieVideosResponse,
+  MovieCastResponse,
 } from "../types/movies.types";
 
 export const getMovies = async (type?: string) => {
@@ -17,6 +18,11 @@ export const getMovieDetails = async (id: string) => {
 };
 export const getMovieVideos = async (id: string) => {
   const response = await api.get<MovieVideosResponse>(`/movie/${id}/videos`);
+
+  return response.data;
+};
+export const getMovieCast = async (id: string) => {
+  const response = await api.get<MovieCastResponse>(`/movie/${id}/credits`);
 
   return response.data;
 };

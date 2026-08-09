@@ -56,7 +56,6 @@ export const dialog = createOverlayManager<DialogPayload>(
           shadow-2xl
         "
             >
-             
               <Dialog.Header className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 p-1!">
                 <Dialog.Title className="truncate text-lg font-semibold sm:text-xl ">
                   {title}
@@ -75,7 +74,6 @@ export const dialog = createOverlayManager<DialogPayload>(
                 </Dialog.HeaderActions>
               </Dialog.Header>
 
-              
               <Dialog.Content className="p-0!">
                 {movieVideos.length > 0 && trailerKey ? (
                   <div className="aspect-video w-full bg-black">
