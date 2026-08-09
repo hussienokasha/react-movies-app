@@ -6,13 +6,9 @@ import type { MovieCast } from "../types/movies.types";
 import { getImageUrl } from "../../../lib/tmdb";
 import { useSlidesPerPage } from "../hooks/useSlidesPerPage";
 
-interface MovieCastProps {
-  movieId: string | undefined;
-}
-
-export function MovieCast({ movieId }: MovieCastProps) {
+export function MovieCast({ movieId }: { movieId: string | undefined }) {
   const [movieCast, setMovieCast] = useState<MovieCast[]>([]);
-    const slidesPerPage = useSlidesPerPage();
+  const slidesPerPage = useSlidesPerPage();
   useEffect(() => {
     const fetchMovieCast = async () => {
       if (!movieId) return;
@@ -30,7 +26,7 @@ export function MovieCast({ movieId }: MovieCastProps) {
           {movieCast.map((cast) => (
             <Carousel.Item
               key={cast.id}
-              className="bg-white overflow-hidden rounded-xl text-black h-fit"
+              className="bg-white border border-gray-200 overflow-hidden rounded-xl text-black h-fit"
             >
               <img
                 src={getImageUrl(cast.profile_path) ?? ""}
