@@ -5,7 +5,7 @@ import { getTvDetails } from "../features/tv/api/tv.api";
 import { StarFill, Youtube } from "@primeicons/react";
 import { getImageUrl } from "../lib/tmdb";
 import { dialog } from "../features/movies/components/MovieTrailerDialog";
-
+import { TvCast } from "../features/tv/components/TvCast";
 
 export function TvDetails() {
   const [tv, setTv] = useState<TvDetailsResponse | null>(null);
@@ -25,7 +25,8 @@ export function TvDetails() {
     fetchtvDetails();
   }, [id]);
 
-  return   <>
+  return (
+    <>
       <div className="min-h-fit bg-[#080808] text-white">
         <section className="relative min-h-175 overflow-hidden">
           <div className="absolute inset-0">
@@ -75,8 +76,7 @@ export function TvDetails() {
                 </div>
 
                 <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-7xl">
-                  {tv?.name+" "}
-                  (<span className="ps-2" >{tv?.first_air_date?.slice(0, 4)}</span>)
+                  {tv?.name + " "}
                 </h1>
 
                 {tv?.tagline && (
@@ -87,10 +87,8 @@ export function TvDetails() {
 
                 <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/70">
                   <div className="flex items-center gap-2">
-                    {tv?.first_air_date?.slice(0, 4)}
+                    {tv?.first_air_date?.slice(0, 4)}   
                   </div>
-
-                 
 
                   <span>•</span>
 
@@ -145,8 +143,6 @@ export function TvDetails() {
               <h3 className="text-lg font-bold">tv Information</h3>
 
               <div className="mt-6 space-y-5 text-sm">
-                
-
                 <div>
                   <p className="text-white/40">Release Date</p>
                   <p className="mt-1 font-medium">{tv?.first_air_date}</p>
@@ -187,6 +183,7 @@ export function TvDetails() {
         </section>
         <dialog.Viewport />
       </div>
-      
-    </>;
+      <TvCast tvId={id} />
+    </>
+  );
 }

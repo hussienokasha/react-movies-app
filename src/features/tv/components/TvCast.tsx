@@ -1,29 +1,31 @@
 import { Carousel } from "@primereact/ui/carousel";
 import { useEffect, useState } from "react";
-import { getMovieCast } from "../api/movies.api";
-import type { MovieCast } from "../types/movies.types";
+
+import type { TvCast } from "../types/tv.types";
 
 import { getImageUrl } from "../../../lib/tmdb";
 import { useSlidesPerPage } from "../../../hooks/useSlidesPerPage";
+import { getTvCast } from "../api/tv.api";
 
-export function MovieCast({ movieId }: { movieId: string | undefined }) {
-  const [movieCast, setMovieCast] = useState<MovieCast[]>([]);
+export function TvCast({ tvId }: { tvId : string | undefined }) {
+  const [tvCast, setTvCast] = useState<TvCast[]>([]);
   const slidesPerPage = useSlidesPerPage();
   useEffect(() => {
     const fetchMovieCast = async () => {
-      if (!movieId) return;
-      const data = await getMovieCast(movieId);
-      setMovieCast(data.cast);
+      if (!tvId) return;
+      const data = await getTvCast(tvId);
+      
+      setTvCast(data.cast);
     };
 
     fetchMovieCast();
-  }, [movieId]);
+  }, [tvId]);
   return (
     <div className="container py-5">
       <h2 className="text-2xl font-bold py-4">Cast</h2>
       <Carousel.Root loop slidesPerPage={slidesPerPage}>
         <Carousel.Content>
-          {movieCast.map((cast) => (
+          {tvCast.map((cast) => (
             <Carousel.Item
               key={cast.id}
               className="bg-white border border-gray-200 overflow-hidden rounded-xl text-black h-fit"

@@ -135,3 +135,43 @@ export interface TvVideo {
   published_at: string;
   id: string;
 }
+export interface TvReviewsResponse {
+  id: number;
+  page: number;
+  results: TvReview[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface TvReview {
+  author: string;
+  author_details: {
+    name: string;
+    username: string;
+    avatar_path?: string;
+    rating: number;
+  };
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+}
+export interface TvCastResponse{
+  cast: TvCast[]
+ 
+  id: number
+}
+export interface TvCast {
+  adult: boolean
+  gender: number
+  id: number
+  known_for_department: string
+  name: string
+  original_name: string
+  popularity: number
+  profile_path: string
+  character: string
+  credit_id: string
+  order: number
+}
