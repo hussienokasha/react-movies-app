@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
-import { getMovieReviews } from "../api/movies.api";
-import type { MovieReview } from "../types/movies.types";
+
 import { Carousel } from "@primereact/ui/carousel";
 import { ChevronDown, ChevronUp } from "@primeicons/react";
 import { getImageUrl } from "../../../lib/tmdb";
+import type { TvReview } from "../types/tv.types";
+import { getTvReviews } from "../api/tv.api";
 
-export function MovieReview({ movieId }: { movieId: string | undefined }) {
-  const [movieReviews, setMovieReviews] = useState<MovieReview[]>([]);
+export function TvReviews({ tvId }: { tvId: string | undefined }) {
+  const [tvReviews, setTvReviews] = useState<TvReview[]>([]);
 
   useEffect(() => {
-    const fetchMovieReviews = async () => {
-      if (!movieId) return;
-      const data = await getMovieReviews(movieId);
-      setMovieReviews(data.results);
+    const fetchTvReviews = async () => {
+      if (!tvId) return;
+      const data = await getTvReviews(tvId);
+      setTvReviews(data.results);
     };
 
-    fetchMovieReviews();
-  }, [movieId]);
+    fetchTvReviews();
+  }, [tvId]);
 
   return (
     <div className="container py-5">
       <h2 className="text-2xl font-bold py-4">
-        Reviews <span>({movieReviews.length}) </span>
+        Reviews <span>({tvReviews.length}) </span>
       </h2>
       <Carousel.Root
         orientation="vertical"
@@ -33,7 +34,7 @@ export function MovieReview({ movieId }: { movieId: string | undefined }) {
         </Carousel.Prev>
 
         <Carousel.Content className="h-80 w-full">
-          {movieReviews.map((review) => (
+          {tvReviews.map((review) => (
             <Carousel.Item
               key={review.id}
               className="p-5 h-fit bg-linear-to-br from-white to-slate-50 border border-slate-200 shadow-xl hover:shadow-2xl transition-shadow duration-300 overflow-y-auto rounded-2xl text-slate-900"

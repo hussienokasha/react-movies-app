@@ -4,8 +4,10 @@ import { useParams } from "react-router-dom";
 import { getTvDetails } from "../features/tv/api/tv.api";
 import { StarFill, Youtube } from "@primeicons/react";
 import { getImageUrl } from "../lib/tmdb";
-import { dialog } from "../features/movies/components/MovieTrailerDialog";
+
 import { TvCast } from "../features/tv/components/TvCast";
+import { TvReviews } from "../features/tv/components/TvReview";
+import { dialog } from "../features/tv/components/TvTrailerDialog";
 
 export function TvDetails() {
   const [tv, setTv] = useState<TvDetailsResponse | null>(null);
@@ -109,7 +111,7 @@ export function TvDetails() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <button
                     onClick={() => {
-                      dialog.open("trailer", {
+                      dialog.open("tv trailer", {
                         title: tv?.name + " Trailer",
                         id: id,
                       });
@@ -120,9 +122,7 @@ export function TvDetails() {
                     <Youtube />
                   </button>
 
-                  <button className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-6 py-3 font-semibold backdrop-blur transition hover:bg-white/20">
-                    Add to Favorites
-                  </button>
+               
                 </div>
               </div>
             </div>
@@ -184,6 +184,7 @@ export function TvDetails() {
         <dialog.Viewport />
       </div>
       <TvCast tvId={id} />
+      <TvReviews tvId={id} />
     </>
   );
 }

@@ -138,3 +138,8 @@ export interface MovieReview {
   updated_at: string;
   url: string;
 }
+export type MovieCategory =
+  | "now_playing"
+  | "popular"
+  | "top_rated"
+  | "upcoming";

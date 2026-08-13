@@ -148,7 +148,7 @@ export interface TvReview {
   author_details: {
     name: string;
     username: string;
-    avatar_path?: string;
+    avatar_path: string;
     rating: number;
   };
   content: string;
@@ -175,3 +175,5 @@ export interface TvCast {
   credit_id: string
   order: number
 }
+
+export type TvCategory = "airing_today" | "on_the_air" | "top_rated" | "popular"

@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import type { MovieDetails } from "../features/movies/types/movies.types";
 import { getMovieDetails } from "../features/movies/api/movies.api";
 import { getImageUrl } from "../lib/tmdb";
-import { dialog } from "../features/movies/components/MovieTrailerDialog";
+
 import { StarFill } from "@primeicons/react/star-fill";
 import { Youtube } from "@primeicons/react";
 import { MovieCast } from "../features/movies/components/MovieCast";
-import { MovieReview } from "../features/movies/components/MovieReview";
+import { MovieReviews } from "../features/movies/components/MovieReviews";
+import { dialog } from "../features/movies/components/MovieTrailerDialog";
 
 export function MovieDetails() {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
@@ -80,7 +81,6 @@ export function MovieDetails() {
 
                 <h1 className="text-4xl font-black tracking-tight sm:text-5xl lg:text-7xl">
                   {movie?.title}
-                  
                 </h1>
 
                 {movie?.tagline && (
@@ -119,7 +119,7 @@ export function MovieDetails() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <button
                     onClick={() => {
-                      dialog.open("trailer", {
+                      dialog.open("movie trailer", {
                         title: movie?.title + " Trailer",
                         id: id,
                       });
@@ -128,10 +128,6 @@ export function MovieDetails() {
                   >
                     Watch Trailer
                     <Youtube />
-                  </button>
-
-                  <button className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-6 py-3 font-semibold backdrop-blur transition hover:bg-white/20">
-                    Add to Favorites
                   </button>
                 </div>
               </div>
@@ -199,7 +195,7 @@ export function MovieDetails() {
         <dialog.Viewport />
       </div>
       <MovieCast movieId={id} />
-      <MovieReview movieId={id} />
+      <MovieReviews movieId={id} />
     </>
   );
 }

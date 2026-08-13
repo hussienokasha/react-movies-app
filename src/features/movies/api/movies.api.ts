@@ -5,10 +5,11 @@ import type {
   MovieVideosResponse,
   MovieCastResponse,
   MovieReviewResponse,
+  MovieCategory,
 } from "../types/movies.types";
 
-export const getMovies = async (type?: string) => {
-  const response = await api.get<MoviesResponse>(`/movie/${type ?? "popular"}`);
+export const getMovies = async (category: MovieCategory) => {
+  const response = await api.get<MoviesResponse>(`/movie/${category}`);
 
   return response.data;
 };

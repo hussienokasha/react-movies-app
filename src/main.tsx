@@ -7,6 +7,7 @@ import { PrimeReactProvider } from "@primereact/core";
 import Nora from "@primeuix/themes/nora";
 
 import { router } from "./router/router";
+import { LoadingProvider } from "./context/loading.context";
 
 const primereact = {
   theme: {
@@ -21,8 +22,10 @@ const primereact = {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <PrimeReactProvider {...primereact} >
-      <RouterProvider router={router} />
+    <PrimeReactProvider {...primereact}>
+      <LoadingProvider>
+        <RouterProvider router={router} />
+      </LoadingProvider>
     </PrimeReactProvider>
   </StrictMode>,
 );
