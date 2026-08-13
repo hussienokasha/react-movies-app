@@ -7,7 +7,8 @@ import { PrimeReactProvider } from "@primereact/core";
 import Nora from "@primeuix/themes/nora";
 
 import { router } from "./router/router";
-import { LoadingProvider } from "./context/loading.context";
+import { LoadingProvider } from "./context/loading.context.tsx";
+
 
 const primereact = {
   theme: {
